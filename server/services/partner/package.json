@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "setupdb": "sequelize db:drop && sequelize db:create && sequelize db:migrate && sequelize db:seed:all"
+    "setupdb": "sequelize db:drop && sequelize db:create && sequelize db:migrate && sequelize db:seed:all",
+    "testing": "jest --forceExit --coverage --runInBand --detectOpenHandles",
+    "db:test": "npx sequelize --env=test db:drop && npx sequelize --env=test db:create && npx sequelize --env=test db:migrate"
   },
   "keywords": [],
   "author": "",

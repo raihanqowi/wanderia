@@ -31,6 +31,7 @@ class BusinessController {
             const id = req.params.id;
             const { name, description, CategoryId, mapUrl, imageUrl } =
                 req.body;
+            // console.log(req.body, "Dari Controller");
             const data = await Business.update(
                 {
                     name,
@@ -45,7 +46,7 @@ class BusinessController {
                     },
                 }
             );
-            res.status(201).json("data berhasil di update");
+            res.status(201).json({message: "data berhasil di update"});
         } catch (error) {
             next(error);
         }

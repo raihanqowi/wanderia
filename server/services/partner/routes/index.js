@@ -12,8 +12,8 @@ router.use(authentication);
 router.use("/post", postRouter);
 router.get("/business", BusinessController.getAllBusinesses);
 router.post("/business", BusinessController.createBusiness);
+router.get("/categories", CategoryController.readCategory);
 router.get("/business/:id", BusinessController.getOneBusiness);
 router.patch("/business/:id", authorization, BusinessController.editBusiness);
-router.get("/categories", CategoryController.readCategory);
 
 module.exports = router;

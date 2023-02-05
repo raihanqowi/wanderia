@@ -5,7 +5,7 @@ const request = require("supertest");
 const app = require("../../app");
 const { runConnection, getDatabase } = require("../../config/mongodb");
 
-let userIdDuringTesting
+let userIdDuringTesting;
 
 describe("Test GET /users endpoint", () => {
   it("should return an array of users with a 200 status code", async () => {
@@ -68,23 +68,23 @@ describe("Test POST /users endpoint", () => {
       address: "456 Main St",
       dateOfBirth: "1998-01-01",
     });
-  
+
     expect(res.statusCode).to.equal(409);
     // expect(res.body).to.have.property("message", "Email already exists");
   });
-
 });
-
 
 describe("Test DELETE /users/:id endpoint", () => {
   it("should failed to delete by returning a 404 status code if the user is not found", async () => {
     const res = await request(app).delete("/users/63da8d0c624ef9527e594d1a");
     expect(res.statusCode).to.equal(404);
-    expect(res.body).to.have.property("code",404);
-    expect(res.body).to.have.property("message","Not found");
+    expect(res.body).to.have.property("code", 404);
+    expect(res.body).to.have.property("message", "Not found");
   });
   it("should successfully delete a user and return a 200 status code", async () => {
-    const deleteRes = await request(app).delete(`/users/${userIdDuringTesting}`);
+    const deleteRes = await request(app).delete(
+      `/users/${userIdDuringTesting}`
+    );
     expect(deleteRes.statusCode).to.equal(200);
   });
 });

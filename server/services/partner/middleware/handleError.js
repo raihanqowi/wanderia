@@ -16,10 +16,10 @@ function handleError(error, req, res, next) {
             status = 400;
             msg = "Password required";
             break;
-        case "createImagesFailed":
-            status = 400;
-            msg = "create Images Failed";
-            break;
+        // case "createImagesFailed":
+        //     status = 400;
+        //     msg = "create Images Failed";
+        //     break;
         case "InvalidCredentials":
             status = 401;
             msg = "Invalid username, email or password";

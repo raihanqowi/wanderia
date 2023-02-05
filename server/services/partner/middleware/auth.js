@@ -4,11 +4,13 @@ const { decodedToken } = require("../helpers/jwt");
 async function authentication(req, res, next) {
     try {
         let access_token = req.headers.access_token;
+        // console.log(access_token, "ini dari auth");
         if (!access_token) {
             throw { name: "Unauthenticated" };
         }
 
         let payload = decodedToken(access_token);
+        // console.log(payload, "ini payload");
 
         let user = await Partner.findByPk(payload.id);
 
@@ -30,10 +32,12 @@ async function authentication(req, res, next) {
 async function authorization(req, res, next) {
     try {
         const { id } = req.params;
+        // console.log(req.params, "ini dari params");
 
         const data = await Business.findOne({
             where: { id },
         });
+        // console.log(data, 'ini Setelah params');
         if (!data) {
             throw { name: `errorNotFound` };
         }

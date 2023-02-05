@@ -27,6 +27,7 @@ class UserController {
                 throw { name: `InvalidCredentials` };
             }
             const compared = compareHash(password, partner.password);
+
             if (!compared) {
                 throw { name: `InvalidCredentials` };
             }

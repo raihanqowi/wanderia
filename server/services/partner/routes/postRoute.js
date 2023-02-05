@@ -6,6 +6,8 @@ const cloudinary = require("cloudinary").v2;
 const { CloudinaryStorage } = require("multer-storage-cloudinary");
 const multer = require("multer");
 const { authorization } = require("../middleware/auth");
+
+
 cloudinary.config({
     cloud_name: "dcbsnkbgr",
     api_key: "663657673789959",
