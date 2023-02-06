@@ -1,5 +1,5 @@
-const { ObjectId } = require("mongodb")
 const Route = require("../models")
+const fs = require('fs')
 
 const { Configuration, OpenAIApi } = require("openai");
 const configuration = new Configuration({
@@ -20,37 +20,78 @@ class RoutesController {
 
     static async addRoute(req, res, next) {
         try {
-            const { placeOfOrigin, destination, BussinessId, UserId } = req.body
+            const { placeOfOrigin, destination, dataBusiness } = req.body
 
-            let prompt = `tunjukkan satu rute perjalanan dari ${placeOfOrigin} ke ${destination} yang indah dan banyak tempat wisatanya dengan format nama jalan dan nama kota saja tanpa tanda baca`
+            // const dataBusiness = fs.readFileSync('./busines.json', 'utf-8')
 
+            let prompt = `berikan rute perjalanan dari ${placeOfOrigin} ke ${destination} yang melewati 4 tempat dari data berikut, ${dataBusiness}, berikan nama tempat, latitude dan longitude, serta alamatnya`
             const { data } = await openai.createCompletion({
                 model: "text-davinci-003",
                 prompt: prompt,
                 temperature: 0,
-                max_tokens: 100,
+                max_tokens: 1000,
                 // top_p: 1,
                 // frequency_penalty: 0,
                 // presence_penalty: 0,
                 // stop: ["\n"],
             });
 
-            let splitData = (data.choices[0].text).replaceAll('\n\n', '').replaceAll(' ', '').split('-')
-            // console.log(splitData)
-            // splitData = data.choices[0].text
-            // splitData = splitData.filter((el, i) => i % 2 !== 0)
-            
-            const payload = splitData.map((el, index) => {
-                return {
-                    UserId: +UserId,
-                    routeNumber: index + 1,
-                    BussinessId: +BussinessId,
-                    destination: el
+
+            let splitData = (data.choices[0].text).split('\n\n')
+            let array = []
+            splitData.map((el) => {
+                if (el.includes('.')) {
+                    array.push(el)
                 }
             })
-            await Route.create(payload)
-            res.status(201).json({ message: 'Success create new routes' })
+
+            function convertToArrayOfObjects(data) {
+                const headers = ['name', 'address', 'latitude', 'longitude'];
+                let result = [];
+
+                for (let i = 0; i < data.length; i++) {
+                    let obj = {};
+                    let currentData = data[i].split('\n');
+
+                    for (let j = 0; j < headers.length; j++) {
+                        obj[headers[j]] = currentData[j].trim();
+                    }
+
+                    result.push(obj);
+                }
+
+                return result;
+            }
+
+            let newArray = convertToArrayOfObjects(array)
+            newArray.forEach((el) => {
+                let temp = []
+                let egg = el.name.split(' ')
+                egg.map((el, i) => {
+                    if (i !== 0) {
+                        temp.push(el)
+                    }
+                })
+                el.name = temp.join(' ')
+            })
+
+            let id = "TRIP_" + Math.floor(1000_000 + Math.random() * 9000_000)
+            const filteredData = newArray.map(obj => {
+                return {
+                    id: id,
+                    name: obj.name,
+                    address: obj.address.replace("Alamat: ", ""),
+                    latitude: obj.latitude.replace("Latitude: ", ""),
+                    longitude: obj.longitude.replace("Longitude: ", "")
+                }
+            });
+
+            // res.status(200).json(filteredData)
+            await Route.create(filteredData)
+            // res.status(200).json(newArray)
+            res.status(201).json({ message: 'Success create new trip' })
         } catch (error) {
+            console.log(error)
             next(error)
         }
     }

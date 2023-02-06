@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1675683605231" clover="3.2.0">
-  <project timestamp="1675683605231" name="All files">
-    <metrics statements="241" coveredstatements="214" conditionals="42" coveredconditionals="31" methods="34" coveredmethods="30" elements="317" coveredelements="275" complexity="0" loc="241" ncloc="241" packages="6" files="16" classes="16"/>
+<coverage generated="1675691246212" clover="3.2.0">
+  <project timestamp="1675691246212" name="All files">
+    <metrics statements="266" coveredstatements="216" conditionals="48" coveredconditionals="31" methods="37" coveredmethods="30" elements="351" coveredelements="277" complexity="0" loc="266" ncloc="266" packages="6" files="16" classes="16"/>
     <package name="partner">
       <metrics statements="12" coveredstatements="12" conditionals="2" coveredconditionals="2" methods="0" coveredmethods="0"/>
       <file name="app.js" path="/Users/raihanqowi/Documents/Final-ProJek/wanderia/server/services/partner/app.js">
@@ -17,70 +17,83 @@
         <line num="10" count="4" type="stmt"/>
         <line num="12" count="4" type="stmt"/>
         <line num="13" count="4" type="stmt"/>
-        <line num="19" count="4" type="stmt"/>
+        <line num="22" count="4" type="stmt"/>
       </file>
     </package>
     <package name="partner.controllers">
-      <metrics statements="76" coveredstatements="66" conditionals="10" coveredconditionals="10" methods="11" coveredmethods="9"/>
+      <metrics statements="89" coveredstatements="68" conditionals="10" coveredconditionals="10" methods="13" coveredmethods="9"/>
       <file name="businesController.js" path="/Users/raihanqowi/Documents/Final-ProJek/wanderia/server/services/partner/controllers/businesController.js">
-        <metrics statements="22" coveredstatements="21" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4"/>
+        <metrics statements="33" coveredstatements="23" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="4"/>
         <line num="1" count="4" type="stmt"/>
         <line num="4" count="2" type="stmt"/>
-        <line num="12" count="2" type="stmt"/>
-        <line num="13" count="2" type="stmt"/>
-        <line num="23" count="1" type="stmt"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="7" count="2" type="stmt"/>
+        <line num="8" count="2" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="19" count="1" type="stmt"/>
+        <line num="24" count="1" type="stmt"/>
         <line num="25" count="1" type="stmt"/>
-        <line num="30" count="1" type="stmt"/>
-        <line num="31" count="1" type="stmt"/>
-        <line num="33" count="1" type="stmt"/>
-        <line num="35" count="1" type="stmt"/>
-        <line num="49" count="1" type="stmt"/>
+        <line num="27" count="1" type="stmt"/>
+        <line num="29" count="1" type="stmt"/>
+        <line num="43" count="1" type="stmt"/>
+        <line num="45" count="0" type="stmt"/>
+        <line num="50" count="0" type="stmt"/>
         <line num="51" count="0" type="stmt"/>
-        <line num="56" count="2" type="stmt"/>
-        <line num="57" count="2" type="stmt"/>
-        <line num="75" count="1" type="stmt"/>
-        <line num="77" count="1" type="stmt"/>
-        <line num="82" count="2" type="stmt"/>
-        <line num="83" count="2" type="stmt"/>
-        <line num="85" count="2" type="stmt"/>
-        <line num="103" count="1" type="stmt"/>
-        <line num="105" count="1" type="stmt"/>
-        <line num="110" count="4" type="stmt"/>
+        <line num="69" count="0" type="stmt"/>
+        <line num="71" count="0" type="stmt"/>
+        <line num="76" count="2" type="stmt"/>
+        <line num="77" count="2" type="stmt"/>
+        <line num="79" count="2" type="stmt"/>
+        <line num="97" count="1" type="stmt"/>
+        <line num="99" count="1" type="stmt"/>
+        <line num="104" count="2" type="stmt"/>
+        <line num="105" count="2" type="stmt"/>
+        <line num="106" count="2" type="stmt"/>
+        <line num="127" count="1" type="stmt"/>
+        <line num="129" count="1" type="stmt"/>
+        <line num="134" count="0" type="stmt"/>
+        <line num="135" count="0" type="stmt"/>
+        <line num="136" count="0" type="stmt"/>
+        <line num="137" count="0" type="stmt"/>
+        <line num="148" count="0" type="stmt"/>
+        <line num="153" count="4" type="stmt"/>
       </file>
       <file name="categoryController.js" path="/Users/raihanqowi/Documents/Final-ProJek/wanderia/server/services/partner/controllers/categoryController.js">
-        <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <metrics statements="11" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
         <line num="1" count="4" type="stmt"/>
         <line num="4" count="2" type="stmt"/>
         <line num="5" count="2" type="stmt"/>
         <line num="25" count="1" type="stmt"/>
         <line num="27" count="1" type="stmt"/>
-        <line num="32" count="4" type="stmt"/>
+        <line num="32" count="0" type="stmt"/>
+        <line num="33" count="0" type="stmt"/>
+        <line num="34" count="0" type="stmt"/>
+        <line num="55" count="0" type="stmt"/>
+        <line num="57" count="0" type="stmt"/>
+        <line num="62" count="4" type="stmt"/>
       </file>
       <file name="postConstroller.js" path="/Users/raihanqowi/Documents/Final-ProJek/wanderia/server/services/partner/controllers/postConstroller.js">
-        <metrics statements="23" coveredstatements="14" conditionals="2" coveredconditionals="2" methods="4" coveredmethods="2"/>
+        <metrics statements="20" coveredstatements="14" conditionals="2" coveredconditionals="2" methods="3" coveredmethods="2"/>
         <line num="1" count="4" type="stmt"/>
         <line num="5" count="2" type="stmt"/>
         <line num="6" count="2" type="stmt"/>
         <line num="7" count="1" type="stmt"/>
         <line num="9" count="1" type="stmt"/>
         <line num="14" count="0" type="stmt"/>
-        <line num="15" count="0" type="stmt"/>
-        <line num="16" count="0" type="stmt"/>
         <line num="17" count="0" type="stmt"/>
-        <line num="19" count="0" type="stmt"/>
-        <line num="20" count="0" type="stmt"/>
-        <line num="27" count="0" type="stmt"/>
-        <line num="28" count="0" type="stmt"/>
+        <line num="29" count="0" type="stmt"/>
         <line num="30" count="0" type="stmt"/>
-        <line num="35" count="2" type="stmt"/>
-        <line num="36" count="2" type="stmt"/>
-        <line num="37" count="2" type="stmt"/>
-        <line num="38" count="2" type="cond" truecount="2" falsecount="0"/>
-        <line num="39" count="1" type="stmt"/>
-        <line num="41" count="1" type="stmt"/>
+        <line num="31" count="0" type="stmt"/>
+        <line num="33" count="0" type="stmt"/>
+        <line num="38" count="2" type="stmt"/>
+        <line num="39" count="2" type="stmt"/>
+        <line num="40" count="2" type="stmt"/>
+        <line num="41" count="2" type="cond" truecount="2" falsecount="0"/>
         <line num="42" count="1" type="stmt"/>
         <line num="44" count="1" type="stmt"/>
-        <line num="49" count="4" type="stmt"/>
+        <line num="45" count="1" type="stmt"/>
+        <line num="47" count="1" type="stmt"/>
+        <line num="52" count="4" type="stmt"/>
       </file>
       <file name="userController.js" path="/Users/raihanqowi/Documents/Final-ProJek/wanderia/server/services/partner/controllers/userController.js">
         <metrics statements="25" coveredstatements="25" conditionals="8" coveredconditionals="8" methods="2" coveredmethods="2"/>
@@ -129,26 +142,26 @@
         <line num="5" count="4" type="stmt"/>
         <line num="6" count="4" type="stmt"/>
         <line num="9" count="4" type="stmt"/>
-        <line num="10" count="14" type="stmt"/>
+        <line num="10" count="10" type="stmt"/>
         <line num="13" count="4" type="stmt"/>
       </file>
     </package>
     <package name="partner.middleware">
-      <metrics statements="49" coveredstatements="39" conditionals="17" coveredconditionals="11" methods="3" coveredmethods="3"/>
+      <metrics statements="61" coveredstatements="39" conditionals="23" coveredconditionals="11" methods="4" coveredmethods="3"/>
       <file name="auth.js" path="/Users/raihanqowi/Documents/Final-ProJek/wanderia/server/services/partner/middleware/auth.js">
-        <metrics statements="23" coveredstatements="19" conditionals="8" coveredconditionals="5" methods="2" coveredmethods="2"/>
+        <metrics statements="35" coveredstatements="19" conditionals="14" coveredconditionals="5" methods="3" coveredmethods="2"/>
         <line num="1" count="4" type="stmt"/>
         <line num="2" count="4" type="stmt"/>
-        <line num="5" count="14" type="stmt"/>
-        <line num="6" count="14" type="stmt"/>
-        <line num="8" count="14" type="cond" truecount="1" falsecount="1"/>
+        <line num="5" count="10" type="stmt"/>
+        <line num="6" count="10" type="stmt"/>
+        <line num="8" count="10" type="cond" truecount="1" falsecount="1"/>
         <line num="9" count="0" type="stmt"/>
-        <line num="11" count="14" type="stmt"/>
-        <line num="12" count="14" type="stmt"/>
-        <line num="14" count="14" type="cond" truecount="1" falsecount="1"/>
+        <line num="11" count="10" type="stmt"/>
+        <line num="12" count="10" type="stmt"/>
+        <line num="14" count="10" type="cond" truecount="1" falsecount="1"/>
         <line num="15" count="0" type="stmt"/>
-        <line num="18" count="14" type="stmt"/>
-        <line num="23" count="14" type="stmt"/>
+        <line num="18" count="10" type="stmt"/>
+        <line num="23" count="10" type="stmt"/>
         <line num="25" count="0" type="stmt"/>
         <line num="30" count="2" type="stmt"/>
         <line num="31" count="2" type="stmt"/>
@@ -159,7 +172,19 @@
         <line num="42" count="1" type="stmt"/>
         <line num="44" count="0" type="stmt"/>
         <line num="47" count="1" type="stmt"/>
-        <line num="51" count="4" type="stmt"/>
+        <line num="52" count="0" type="stmt"/>
+        <line num="53" count="0" type="stmt"/>
+        <line num="55" count="0" type="stmt"/>
+        <line num="58" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="59" count="0" type="stmt"/>
+        <line num="61" count="0" type="stmt"/>
+        <line num="66" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="67" count="0" type="stmt"/>
+        <line num="69" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="70" count="0" type="stmt"/>
+        <line num="72" count="0" type="stmt"/>
+        <line num="75" count="0" type="stmt"/>
+        <line num="79" count="4" type="stmt"/>
       </file>
       <file name="handleError.js" path="/Users/raihanqowi/Documents/Final-ProJek/wanderia/server/services/partner/middleware/handleError.js">
         <metrics statements="26" coveredstatements="20" conditionals="9" coveredconditionals="6" methods="1" coveredmethods="1"/>
@@ -272,7 +297,7 @@
     <package name="partner.routes">
       <metrics statements="31" coveredstatements="31" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="index.js" path="/Users/raihanqowi/Documents/Final-ProJek/wanderia/server/services/partner/routes/index.js">
-        <metrics statements="17" coveredstatements="17" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <metrics statements="23" coveredstatements="23" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="4" type="stmt"/>
         <line num="2" count="4" type="stmt"/>
         <line num="3" count="4" type="stmt"/>
@@ -280,7 +305,7 @@
         <line num="5" count="4" type="stmt"/>
         <line num="6" count="4" type="stmt"/>
         <line num="7" count="4" type="stmt"/>
-        <line num="9" count="4" type="stmt"/>
+        <line num="8" count="4" type="stmt"/>
         <line num="10" count="4" type="stmt"/>
         <line num="11" count="4" type="stmt"/>
         <line num="12" count="4" type="stmt"/>
@@ -289,24 +314,24 @@
         <line num="15" count="4" type="stmt"/>
         <line num="16" count="4" type="stmt"/>
         <line num="17" count="4" type="stmt"/>
+        <line num="18" count="4" type="stmt"/>
         <line num="19" count="4" type="stmt"/>
+        <line num="20" count="4" type="stmt"/>
+        <line num="22" count="4" type="stmt"/>
+        <line num="23" count="4" type="stmt"/>
+        <line num="26" count="4" type="stmt"/>
+        <line num="28" count="4" type="stmt"/>
       </file>
       <file name="postRoute.js" path="/Users/raihanqowi/Documents/Final-ProJek/wanderia/server/services/partner/routes/postRoute.js">
-        <metrics statements="14" coveredstatements="14" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="4" type="stmt"/>
         <line num="2" count="4" type="stmt"/>
         <line num="3" count="4" type="stmt"/>
-        <line num="5" count="4" type="stmt"/>
-        <line num="6" count="4" type="stmt"/>
-        <line num="7" count="4" type="stmt"/>
         <line num="8" count="4" type="stmt"/>
-        <line num="11" count="4" type="stmt"/>
-        <line num="17" count="4" type="stmt"/>
         <line num="23" count="4" type="stmt"/>
-        <line num="25" count="4" type="stmt"/>
-        <line num="26" count="4" type="stmt"/>
-        <line num="32" count="4" type="stmt"/>
-        <line num="34" count="4" type="stmt"/>
+        <line num="30" count="4" type="stmt"/>
+        <line num="31" count="4" type="stmt"/>
+        <line num="33" count="4" type="stmt"/>
       </file>
     </package>
   </project>

@@ -1,4 +1,4 @@
-const { Category, Business, Partner } = require("../models/index");
+const { Category, Business, Partner, Post } = require("../models/index");
 const { decodedToken } = require("../helpers/jwt");
 
 async function authentication(req, res, next) {
@@ -48,7 +48,36 @@ async function authorization(req, res, next) {
     }
 }
 
+async function postAuthorization(req, res, next) {
+    try {
+        const { id } = req.params;
+
+        const post = await Post.findOne({
+            where: { id },
+        });
+        if (!post) {
+            throw { name: `errorNotFound` };
+        }
+        const data = await Business.findOne({
+            where: {
+                id: post.BusinessId,
+            },
+        });
+        if (!data) {
+            throw { name: `errorNotFound` };
+        }
+        if (req.user.id === data.PartnerId) {
+            next();
+        } else {
+            throw { name: "Forbidden" };
+        }
+    } catch (error) {
+        next(error);
+    }
+}
+
 module.exports = {
     authentication,
     authorization,
+    postAuthorization,
 };

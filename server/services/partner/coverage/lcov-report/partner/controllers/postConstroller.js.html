@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">60.86% </span>
+                <span class="strong">70% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>14/23</span>
+                <span class='fraction'>14/20</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">66.66% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>2/4</span>
+                <span class='fraction'>2/3</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">60.86% </span>
+                <span class="strong">70% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>14/23</span>
+                <span class='fraction'>14/20</span>
             </div>
         
             
@@ -112,7 +112,10 @@
 <a name='L47'></a><a href='#L47'>47</a>
 <a name='L48'></a><a href='#L48'>48</a>
 <a name='L49'></a><a href='#L49'>49</a>
-<a name='L50'></a><a href='#L50'>50</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">4x</span>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -126,11 +129,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -138,6 +138,12 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -175,19 +181,22 @@ class PostControler {
 &nbsp;
 <span class="fstat-no" title="function not covered" >    st</span>atic async createPost(req, res, next) {
 <span class="cstat-no" title="statement not covered" >        try {</span>
-            let { name } = <span class="cstat-no" title="statement not covered" >req.body;</span>
-            let images = <span class="cstat-no" title="statement not covered" >req.files;</span>
+            // let { name } = req.body;
+            // let images = req.files;
             const { id } = <span class="cstat-no" title="statement not covered" >req.params;</span>
 &nbsp;
-            const postImagesData = <span class="cstat-no" title="statement not covered" >images.map(<span class="fstat-no" title="function not covered" >(i</span>mage) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >                return {</span>
-                    name,
-                    imageUrl: image.path,
-                    BusinessId: id,
-                };
-            });
+            // const postImagesData = images.map((image) =&gt; {
+            //     return {
+            //         name,
+            //         imageUrl: image.path,
+            //         BusinessId: id,
+            //     };
+            // });
 &nbsp;
-            const dataPost = <span class="cstat-no" title="statement not covered" >await Post.bulkCreate(postImagesData);</span>
+            // const dataPost = await Post.bulkCreate(postImagesData);
+            // res.status(201).json(dataPost);
+            const { name, imageUrl } = <span class="cstat-no" title="statement not covered" >req.body</span>
+            const dataPost = <span class="cstat-no" title="statement not covered" >await Post.create({ name, imageUrl, BusinessId: id });</span>
 <span class="cstat-no" title="statement not covered" >            res.status(201).json(dataPost);</span>
         } catch (error) {
 <span class="cstat-no" title="statement not covered" >            next(error);</span>
@@ -217,7 +226,7 @@ module.exports = PostControler;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-02-06T11:40:05.212Z
+                at 2023-02-06T13:47:26.197Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

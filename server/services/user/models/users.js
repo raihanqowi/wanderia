@@ -30,6 +30,25 @@ class User {
         }
     }
 
+    static async updateUser(id, dataUsers) {
+        try {
+            const data = {
+                ...dataUsers,
+                updated_at: new Date()
+            }
+            const db = getDatabase()
+            const dataUserFromDb = db.collection("Users")
+            const result = await dataUserFromDb.updateOne({
+                _id: new ObjectId(id)
+            }, {
+                $set: data
+            })
+            return { ...result, updated_at: data.updated_at }
+        } catch (error) {
+            throw error
+        }
+    }
+
     static async findUserByPk(id) {
         try {
             const db = getDatabase()
@@ -38,7 +57,20 @@ class User {
                 _id: new ObjectId(id)
             })
             return data
-        } catch (error) {
+    } catch (error) {
+            throw error
+        }
+    }
+
+    static async findUserByEmail(email) {
+        try {
+            const db = getDatabase()
+            const dataUserFromDb = db.collection("Users")
+            const data = await dataUserFromDb.findOne({
+                email
+            })
+            return data
+    } catch (error) {
             throw error
         }
     }
