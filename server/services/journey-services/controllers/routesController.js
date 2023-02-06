@@ -13,6 +13,7 @@ class RoutesController {
             let data = await Route.findAll()
             res.status(200).json(data)
         } catch (error) {
+            console.log(error, "error control");
             next(error)
         }
     }

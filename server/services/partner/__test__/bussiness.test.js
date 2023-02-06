@@ -157,6 +157,9 @@ describe("POST:/business", () => {
     expect(res.status).toBe(400);
     expect(res.body).toHaveProperty("message", "Name is Required");
   });
+  
+
+
 });
 
 describe("PATCH: /bussiness/:id", () => {

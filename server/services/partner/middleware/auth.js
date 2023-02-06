@@ -8,10 +8,7 @@ async function authentication(req, res, next) {
         if (!access_token) {
             throw { name: "Unauthenticated" };
         }
-
         let payload = decodedToken(access_token);
-        // console.log(payload, "ini payload");
-
         let user = await Partner.findByPk(payload.id);
 
         if (!user) {

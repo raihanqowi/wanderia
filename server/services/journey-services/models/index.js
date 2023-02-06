@@ -3,7 +3,7 @@ const { clientDB } = require("../configs/mongoDb");
 class Route {
     static routeCollection() {
         return clientDB().collection("routes");
-    }
+    } // ngasmbil collection
 
     static get route() {
         return this.routeCollection();

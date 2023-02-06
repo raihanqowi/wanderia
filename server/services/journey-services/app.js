@@ -14,13 +14,23 @@ app.use(cors())
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+
+// app.get("/", (req, res) => res.status(200).json({msg: "HAI"}))
 app.use('/routes', router)
 app.use(errorHandler)
-
+// console.log("connect DB");
 connectDB()
     .then(() => {
-        app.listen(port, () => {
-            console.log(`Example app listening on port ${port}`);
-        });
+        if (process.env.NODE_ENV !== 'test'){
+            app.listen(port, () => {
+                console.log(`Example app listening on port ${port}`);
+
+            });
+        }
+      
     })
     .catch((err) => console.log(err));
+
+
+module.exports = app; 
+
