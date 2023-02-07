@@ -12,17 +12,12 @@ router.post("/partner/login", UserController.login);
 router.get("/", BusinessController.getAllBusinesses);
 router.get("/categories", CategoryController.readCategory);
 router.get("/business/:id", BusinessController.getOneBusiness);
-router.put("/business/:id", BusinessController.updateStatus); //super admin
-router.get("/categories/:id", CategoryController.readCategory);
+// router.put("/business/:id", BusinessController.updateStatus); //super admin
+router.get("/categories/:id", CategoryController.readCategoryId);
 router.use(authentication);
 router.use("/post", postRouter);
 router.get("/business", BusinessController.getPartnerBusiness);
 router.post("/business", BusinessController.createBusiness);
-
-router.get("/categories", CategoryController.readCategory);
-router.get("/business/:id", BusinessController.getOneBusiness);
-
-
 router.patch("/business/:id", authorization, BusinessController.editBusiness);
 
 module.exports = router;

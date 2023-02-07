@@ -9,9 +9,9 @@ const secret = `wanderiasangatrahasia`;
 
 const dataPartner = [
   {
-    name: "Qowi",
-    email: "qowi@gmail.com",
-    password: "123456",
+    name:"qowi",
+    email:"qowi@gmail.com",
+    password:"123456",
   },
   {
     name: "Raihan",
@@ -22,39 +22,27 @@ const dataPartner = [
 
 const dataCategory = [
   {
-    name: "Travel",
+    name: "Kedai Kopi",
     symbol:
-      "https://ih1.redbubble.net/image.3888203723.1875/st,small,507x507-pad,600x600,f8f8f8.jpg",
+      "2615",
   },
 ];
 
 const dataBusiness = [
   {
-    name: "test",
-    description: "test",
+    name: "Kopi Poci Rajawali",
+    latitude: -6.143049,
+    longitude: 106.839994,
+    address: "Jl. Rajawali Selatan Jl. Gn. Sahari 11 Dalam No.1B, RT.13/RW.2",
+    price: "$",
+    rating:
+    "4.8",
     CategoryId: 1,
-    mapUrl:
-      "https://www.google.co.id/maps/place/Anjani+Jakarta/@-6.2778307,106.7672179,15.14z/data=!4m5!3m4!1s0x2e69f10f9bffd94d:0x788dc70a196640c9!8m2!3d-6.2658315!4d106.7718614",
     PartnerId: 1,
-    imageUrl:
-      "https://external-preview.redd.it/iSzqr1SrC4gczNc2DCJaWrykdasN0jcnSLjKAav8-1w.jpg?auto=webp&s=3e9532725ed6e40bd3f6b353c4f6d0d3fb691d8d",
-    latitude: -6.2778307,
-    longitude: 106.7672179,
     status: "pending",
-  },
-  {
-    name: "Jalan Jalan",
-    description: "Jalan jalan",
-    CategoryId: 1,
-    mapUrl:
-      "https://www.google.co.id/maps/place/Anjani+Jakarta/@-6.2778307,106.7672179,15.14z/data=!4m5!3m4!1s0x2e69f10f9bffd94d:0x788dc70a196640c9!8m2!3d-6.2658315!4d106.7718614",
-    PartnerId: 1,
-    imageUrl:
-      "https://external-preview.redd.it/iSzqr1SrC4gczNc2DCJaWrykdasN0jcnSLjKAav8-1w.jpg?auto=webp&s=3e9532725ed6e40bd3f6b353c4f6d0d3fb691d8d",
-    latitude: -6.2778307,
-    longitude: 106.7672179,
-    status: "pending",
-  },
+    imageUrl: "https://lh5.googleusercontent.com/p/AF1QipMgRi3MQEnn46AudVTSZWm7CJgR5uMM4ljpNYWi=w122-h92-k-no",
+
+  }
 ];
 
 const dataPost = [
@@ -93,10 +81,10 @@ beforeAll(async () => {
   await queryInterface.bulkInsert("Posts", dataPost, {});
 
   const userPartner = {
-    name: "hanon1",
-    email: "hanon1@gmail.com",
-    password: "123456",
-  };
+    name:"Leexo",
+    email:"sbucham0@google.ru",
+    password:"7qvl1Kf"
+  }
   const User = await Partner.create(userPartner);
   access_token = createToken({ id: User.id }, secret);
 });
@@ -131,12 +119,11 @@ describe("GET: /categories", () => {
   test("GET: /categories - 200 - Get All Categories Success", async () => {
     const res = await request(app)
       .get("/categories")
-      .set("access_token", access_token);
     expect(res.status).toBe(200);
     expect(res.body).toBeInstanceOf(Array);
     res.body.forEach((el) => {
       expect(el).toHaveProperty("id", expect.any(Number));
-      expect(el).toHaveProperty("id", expect.any(Number));
+      expect(el).toHaveProperty("name", expect.any(String));
       expect(el).toHaveProperty("symbol", expect.any(String));
       expect(el).toHaveProperty("createdAt", expect.any(String));
       expect(el).toHaveProperty("updatedAt", expect.any(String));
@@ -145,8 +132,9 @@ describe("GET: /categories", () => {
         expect(val).toHaveProperty("name", expect.any(String));
         expect(val).toHaveProperty("latitude", expect.any(Number));
         expect(val).toHaveProperty("longitude", expect.any(Number));
-        expect(val).toHaveProperty("description", expect.any(String));
-        expect(val).toHaveProperty("mapUrl", expect.any(String));
+        expect(val).toHaveProperty("address", expect.any(String));
+        expect(val).toHaveProperty("price", expect.any(String));
+        expect(val).toHaveProperty("rating", expect.any(String));
         expect(val).toHaveProperty("CategoryId", expect.any(Number));
         expect(val).toHaveProperty("PartnerId", expect.any(Number));
         expect(val).toHaveProperty("status", expect.any(String));
@@ -162,7 +150,40 @@ describe("GET: /categories", () => {
         expect(val).toHaveProperty("posts", expect.any(Array));
       });
     });
-    // console.log(res)
+  });
+
+  test("GET: /categories/:id - 200 - Get Categories By ID", async () => {
+    const res = await request(app)
+      .get("/categories/1")
+    expect(res.status).toBe(200);
+    expect(res.body).toBeInstanceOf(Object);
+      expect(res.body).toHaveProperty("id", expect.any(Number));
+      expect(res.body).toHaveProperty("name", expect.any(String));
+      expect(res.body).toHaveProperty("symbol", expect.any(String));
+      expect(res.body).toHaveProperty("createdAt", expect.any(String));
+      expect(res.body).toHaveProperty("updatedAt", expect.any(String));
+      res.body.businesses.forEach((val) => {
+        expect(val).toHaveProperty("id", expect.any(Number));
+        expect(val).toHaveProperty("name", expect.any(String));
+        expect(val).toHaveProperty("latitude", expect.any(Number));
+        expect(val).toHaveProperty("longitude", expect.any(Number));
+        expect(val).toHaveProperty("address", expect.any(String));
+        expect(val).toHaveProperty("price", expect.any(String));
+        expect(val).toHaveProperty("rating", expect.any(String));
+        expect(val).toHaveProperty("CategoryId", expect.any(Number));
+        expect(val).toHaveProperty("PartnerId", expect.any(Number));
+        expect(val).toHaveProperty("status", expect.any(String));
+        expect(val).toHaveProperty("imageUrl", expect.any(String));
+        expect(val).toHaveProperty("createdAt", expect.any(String));
+        expect(val).toHaveProperty("updatedAt", expect.any(String));
+        expect(val).toHaveProperty("author", expect.any(Object));
+        expect(val.author).toHaveProperty("id", expect.any(Number));
+        expect(val.author).toHaveProperty("name", expect.any(String));
+        expect(val.author).toHaveProperty("email", expect.any(String));
+        expect(val.author).toHaveProperty("createdAt", expect.any(String));
+        expect(val.author).toHaveProperty("updatedAt", expect.any(String));
+        expect(val).toHaveProperty("posts", expect.any(Array));
+      });
   });
 
   test("testing read Product if error", async () => {
@@ -174,4 +195,16 @@ describe("GET: /categories", () => {
       .set("access_token", access_token);
     expect(response.status).toBe(500);
   });
+
+  test("testing read Product if error", async () => {
+    jest
+      .spyOn(Category, "findOne")
+      .mockRejectedValue(() => Promise.reject({ name: "something wrong" }));
+    const response = await request(app)
+      .get("/categories/1000")
+    expect(response.status).toBe(500);
+  });
+
+
+ 
 });

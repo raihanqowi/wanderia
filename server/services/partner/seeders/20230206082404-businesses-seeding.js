@@ -36,7 +36,7 @@ module.exports = {
             el.PartnerId = tempPartner;
             el.createdAt = new Date();
             el.updatedAt = new Date();
-            el.status = "pending";
+            el.status = "active";
             return el;
         });
 

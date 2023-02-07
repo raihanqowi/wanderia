@@ -7,7 +7,7 @@
     "dev": "npx nodemon app.js",
     "start": "node app.js",
     "test": "nyc mocha tests/**/*.test.js --timeout 10000 --exit",
-    "testing": "jest --detectOpenHandles --forceExit"
+    "testing": "jest --coverage --detectOpenHandles --forceExit"
   },
   "keywords": [],
   "author": "",

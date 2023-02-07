@@ -7,35 +7,56 @@ const queryInterface = sequelize.queryInterface;
 let access_token
 
 const dataPartner = [
-    {
-        "name": "Qowi",
-        "email": "qowi@gmail.com",
-        "password": "123456"
-    },
-    {
-        "name": "Raihan",
-        "email": "raihan@gmail.com",
-        "password": "123456"
-    }
-]
+  {
+    name:"qowi",
+    email:"qowi@gmail.com",
+    password:"123456",
+  },
+  {
+    name: "Raihan",
+    email: "raihan@gmail.com",
+    password: "123456",
+  },
+];
 
 const dataCategory = [
-    {
-        name: "Travel",
-        symbol: "https://ih1.redbubble.net/image.3888203723.1875/st,small,507x507-pad,600x600,f8f8f8.jpg"
-    }
-]
+  {
+    name: "Kedai Kopi",
+    symbol:
+      "2615",
+  },
+];
 
 const dataBusiness = [
-    {
-        name:"test",
-        description:"test",
-        CategoryId: 1,
-        mapUrl: "https://www.google.co.id/maps/place/Anjani+Jakarta/@-6.2778307,106.7672179,15.14z/data=!4m5!3m4!1s0x2e69f10f9bffd94d:0x788dc70a196640c9!8m2!3d-6.2658315!4d106.7718614",
-        PartnerId: 1,
-        imageUrl: "https://external-preview.redd.it/iSzqr1SrC4gczNc2DCJaWrykdasN0jcnSLjKAav8-1w.jpg?auto=webp&s=3e9532725ed6e40bd3f6b353c4f6d0d3fb691d8d"
-    }
-]
+  {
+    name: "Kopi Poci Rajawali",
+    latitude: -6.143049,
+    longitude: 106.839994,
+    address: "Jl. Rajawali Selatan Jl. Gn. Sahari 11 Dalam No.1B, RT.13/RW.2",
+    price: "$",
+    rating:
+    "4.8",
+    CategoryId: 1,
+    PartnerId: 1,
+    status: "pending",
+    imageUrl: "https://lh5.googleusercontent.com/p/AF1QipMgRi3MQEnn46AudVTSZWm7CJgR5uMM4ljpNYWi=w122-h92-k-no",
+
+  },
+  {
+    name: "Kopi Poci Rajawali",
+    latitude: -6.143049,
+    longitude: 106.839994,
+    address: "Jl. Rajawali Selatan Jl. Gn. Sahari 11 Dalam No.1B, RT.13/RW.2",
+    price: "$",
+    rating:
+    "4.8",
+    CategoryId: 1,
+    PartnerId: 1,
+    status: "pending",
+    imageUrl: "https://lh5.googleusercontent.com/p/AF1QipMgRi3MQEnn46AudVTSZWm7CJgR5uMM4ljpNYWi=w122-h92-k-no",
+
+  }
+];
 
 const dataPost = [
     {
@@ -81,26 +102,10 @@ beforeAll(async() => {
     access_token = createToken({id: 1})
 })
 
+
 beforeEach(() => {
-    jest.restoreAllMocks();
-    jest.mock("multer", () => {
-      const multer = () => {
-        return {
-          array: () => {
-            return (req, res, next) => {
-              req.files = [
-                {
-                  url: "http://mock.url/a.png",
-                },
-              ];
-              return next();
-            };
-          },
-        };
-      };
-      return multer;
-    });
-})
+  jest.restoreAllMocks();
+});
 
 
 afterAll(async() => {
@@ -129,23 +134,53 @@ afterAll(async() => {
       });
 })
 
-// describe("POST:/post/add-post/:id", () => {
-//     test("POST: /post/ - 201 - Business Post", async () => {
-//         const res = await request(app)
-//         .post('post/add-post/1')
-//         .field("name", "test")
-//         .attach("imageUrl", "./assets/kucing2.jpeg")
-//         .field("BusinessId", "1")
-//         .set('access_token', access_token)
-//        console.log(res);
-//     })
-// })
+describe("POST:/post/add/:id", () => {
+    test("POST: /post/ - 201 - Business Post", async () => {
+        const res = await request(app)
+        .post('/post/add/1')
+        .send({
+          name: "Kopi Lawak With Cami",
+          imageUrl: "kosong"
+        })
+        .set('access_token', access_token)
+        expect(res.body).toHaveProperty("id", expect.any(Number));
+        expect(res.body).toHaveProperty("name", expect.any(String));
+        expect(res.body).toHaveProperty("BusinessId", expect.any(Number));
+        expect(res.body).toHaveProperty("createdAt", expect.any(String));
+        expect(res.body).toHaveProperty("updatedAt", expect.any(String));
+    })
+
+    test("POST: /post/ - 401 - Failed Because a dongt have access_token", async () => {
+      const res = await request(app)
+      .post('/post/add/1')
+      .send({
+        name: "Kopi Lawak With Cami",
+        imageUrl: "kosong"
+      })
+     expect(res.status).toBe(401)
+     expect(res.body).toHaveProperty('message', 'Must login first')
+  })
+
+  test("POST: /post/ - 401 - Failed Because a dongt have access_token", async () => {
+    const res = await request(app)
+    .post('/post/add/1')
+    .send({
+      nam: "Kopi Lawak With Cami",
+      imageUrl: "kosong"
+    })
+    .set('access_token', access_token)
+    // console.log(res);
+   expect(res.status).toBe(400)
+   expect(res.body).toHaveProperty('message', 'Name is Required')
+})
+})
 
 describe("GET: /post", () => {
     test("GET: /post - 200 - Read Post", async () => {
         const res =  await request(app)
         .get("/post")
         .set("access_token", access_token)
+        // console.log(res);
         expect(res.status).toBe(200)
         expect(res.body).toBeInstanceOf(Array);
         res.body.forEach((el) => {
@@ -181,7 +216,7 @@ describe("DELETE: /post/:id", () => {
 
     test("DELETE: /post/:id - 404 - Delete Post Data Not Found", async () => {
         const res = await request(app)
-        .delete("/post/1001")
+        .delete("/post/10000001")
         .set("access_token", access_token)
         expect(res.status).toBe(404)
         expect(res.body).toHaveProperty("message", "error not found")

@@ -56,6 +56,15 @@ describe("POST:/partner/register", () => {
     expect(res.status).toBe(400);
     expect(res.body).toHaveProperty("message", "partner name is required");
   });
+
+  test("POST: /register/partner - Failed Password is Required", async () => {
+    const res = await request(app).post("/partner/register").send({
+      name: "argi",
+      email: "argiAI@gmail.com",
+    });
+    expect(res.status).toBe(400);
+    expect(res.body).toHaveProperty("message", "password is required");
+  });
 });
 
 describe("POST: /partner/login", () => {

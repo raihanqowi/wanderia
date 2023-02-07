@@ -24,48 +24,47 @@ module.exports = (sequelize, DataTypes) => {
         }
     }
     Business.init(
-        { // category id valid, name, valid, mapurl valid,
+        {
+            // category id valid, name, valid, mapurl valid,
             name: {
                 type: DataTypes.STRING,
                 allowNull: false,
                 validate: {
-                    notNull:{
-                        msg: "Name is Required"
+                    notNull: {
+                        msg: "Name is Required",
                     },
-                    notEmpty:{
-                        msg: "Name is Required"
-                    }
-                }
+                    notEmpty: {
+                        msg: "Name is Required",
+                    },
+                },
             },
             latitude: DataTypes.FLOAT,
             longitude: DataTypes.FLOAT,
-            description: DataTypes.TEXT,
-            mapUrl: {
-                type:DataTypes.STRING,
+            address: {
+                type: DataTypes.TEXT,
                 allowNull: false,
-                validate:{
-                    notNull:{
-                        msg: "Location is Required"
+                validate: {
+                    notNull: {
+                        msg: "Address is Required",
                     },
-                    notEmpty:{
-                        msg: "Location is Required"
+                    notEmpty: {
+                        msg: "Address is Required",
                     },
-                    isUrl:{
-                        msg: "Location must be URL from maps location"
-                    }
-                }
+                },
             },
+            price: { type: DataTypes.STRING, defaultValue: "$" },
+            rating: { type: DataTypes.STRING, defaultValue: "5" },
             CategoryId: {
                 type: DataTypes.INTEGER,
                 allowNull: false,
-                validate:{
+                validate: {
                     notNull: {
-                        msg: "Category is Required"
+                        msg: "Category is Required",
                     },
                     notEmpty: {
-                        msg: "Category is Required"
-                    }
-                }
+                        msg: "Category is Required",
+                    },
+                },
             },
             PartnerId: DataTypes.INTEGER,
             status: DataTypes.STRING,
@@ -76,27 +75,5 @@ module.exports = (sequelize, DataTypes) => {
             modelName: "Business",
         }
     );
-    Business.beforeCreate(function (business) {
-        let checkLatitude = business.mapUrl.split("/");
-        let check;
-        checkLatitude.map(function (el) {
-            if (el.includes("@")) {
-                check = el.slice(1).split(",");
-            }
-        });
-        business.latitude = check[0];
-        business.longitude = check[1];
-    });
-    Business.beforeUpdate(function (business) {
-        let checkLatitude = business.mapUrl.split("/");
-        let check;
-        checkLatitude.map(function (el) {
-            if (el.includes("@")) {
-                check = el.slice(1).split(",");
-            }
-        });
-        business.latitude = check[0];
-        business.longitude = check[1];
-    });
     return Business;
 };

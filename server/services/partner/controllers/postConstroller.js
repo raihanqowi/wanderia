@@ -12,22 +12,11 @@ class PostControler {
 
     static async createPost(req, res, next) {
         try {
-            // let { name } = req.body;
-            // let images = req.files;
             const { id } = req.params;
-
-            // const postImagesData = images.map((image) => {
-            //     return {
-            //         name,
-            //         imageUrl: image.path,
-            //         BusinessId: id,
-            //     };
-            // });
-
-            // const dataPost = await Post.bulkCreate(postImagesData);
-            // res.status(201).json(dataPost);
             const { name, imageUrl } = req.body
-            const dataPost = await Post.create({ name, imageUrl, BusinessId: id });
+            const dataPost = await Post.create({ 
+                name, imageUrl, BusinessId: id 
+            }); 
             res.status(201).json(dataPost);
         } catch (error) {
             next(error);

@@ -13,7 +13,6 @@ class RoutesController {
             let data = await Route.findAll()
             res.status(200).json(data)
         } catch (error) {
-            console.log(error, "error control");
             next(error)
         }
     }
@@ -98,8 +97,8 @@ class RoutesController {
 
     static async getOneRoute(req, res) {
         try {
-            const { UserId } = req.params
-            let data = await Route.findOne(+UserId)
+            const { tripId } = req.params
+            let data = await Route.findOne(+tripId)
             res.status(200).json(data)
         } catch (error) {
             next(error)
