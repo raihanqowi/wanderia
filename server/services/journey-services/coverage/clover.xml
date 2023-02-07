@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1675777538109" clover="3.2.0">
-  <project timestamp="1675777538109" name="All files">
-    <metrics statements="122" coveredstatements="64" conditionals="12" coveredconditionals="5" methods="22" coveredmethods="10" elements="156" coveredelements="79" complexity="0" loc="122" ncloc="122" packages="6" files="6" classes="6"/>
+<coverage generated="1675779666145" clover="3.2.0">
+  <project timestamp="1675779666145" name="All files">
+    <metrics statements="122" coveredstatements="58" conditionals="12" coveredconditionals="5" methods="22" coveredmethods="8" elements="156" coveredelements="71" complexity="0" loc="122" ncloc="122" packages="6" files="6" classes="6"/>
     <package name="journey-services">
       <metrics statements="20" coveredstatements="17" conditionals="6" coveredconditionals="4" methods="3" coveredmethods="1"/>
       <file name="app.js" path="/Users/raihanqowi/Documents/Final-ProJek/wanderia/server/services/journey-services/app.js">
@@ -56,17 +56,17 @@
       </file>
     </package>
     <package name="journey-services.controllers">
-      <metrics statements="53" coveredstatements="13" conditionals="4" coveredconditionals="0" methods="9" coveredmethods="2"/>
+      <metrics statements="53" coveredstatements="9" conditionals="4" coveredconditionals="0" methods="9" coveredmethods="1"/>
       <file name="routesController.js" path="/Users/raihanqowi/Documents/Final-ProJek/wanderia/server/services/journey-services/controllers/routesController.js">
-        <metrics statements="53" coveredstatements="13" conditionals="4" coveredconditionals="0" methods="9" coveredmethods="2"/>
+        <metrics statements="53" coveredstatements="9" conditionals="4" coveredconditionals="0" methods="9" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
         <line num="5" count="1" type="stmt"/>
         <line num="8" count="1" type="stmt"/>
-        <line num="12" count="1" type="stmt"/>
-        <line num="13" count="1" type="stmt"/>
-        <line num="14" count="1" type="stmt"/>
+        <line num="12" count="2" type="stmt"/>
+        <line num="13" count="2" type="stmt"/>
+        <line num="14" count="2" type="stmt"/>
         <line num="16" count="0" type="stmt"/>
         <line num="21" count="0" type="stmt"/>
         <line num="22" count="0" type="stmt"/>
@@ -101,10 +101,10 @@
         <line num="91" count="0" type="stmt"/>
         <line num="93" count="0" type="stmt"/>
         <line num="94" count="0" type="stmt"/>
-        <line num="99" count="1" type="stmt"/>
-        <line num="100" count="1" type="stmt"/>
-        <line num="101" count="1" type="stmt"/>
-        <line num="102" count="1" type="stmt"/>
+        <line num="99" count="0" type="stmt"/>
+        <line num="100" count="0" type="stmt"/>
+        <line num="101" count="0" type="stmt"/>
+        <line num="102" count="0" type="stmt"/>
         <line num="104" count="0" type="stmt"/>
         <line num="109" count="0" type="stmt"/>
         <line num="110" count="0" type="stmt"/>
@@ -125,17 +125,17 @@
       </file>
     </package>
     <package name="journey-services.models">
-      <metrics statements="16" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="4"/>
+      <metrics statements="16" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="3"/>
       <file name="index.js" path="/Users/raihanqowi/Documents/Final-ProJek/wanderia/server/services/journey-services/models/index.js">
-        <metrics statements="16" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="4"/>
+        <metrics statements="16" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="3"/>
         <line num="1" count="1" type="stmt"/>
         <line num="5" count="3" type="stmt"/>
         <line num="9" count="3" type="stmt"/>
-        <line num="13" count="2" type="stmt"/>
-        <line num="14" count="2" type="stmt"/>
+        <line num="13" count="3" type="stmt"/>
+        <line num="14" count="3" type="stmt"/>
         <line num="16" count="0" type="stmt"/>
-        <line num="21" count="1" type="stmt"/>
-        <line num="22" count="1" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
         <line num="24" count="0" type="stmt"/>
         <line num="29" count="0" type="stmt"/>
         <line num="30" count="0" type="stmt"/>

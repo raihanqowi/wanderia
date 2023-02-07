@@ -39,16 +39,16 @@ describe("Test GET /routes endpoint", () => {
         })
     })
 
-    it("should return a user with a 200 status code", async () => {
-        const res = await request(app)
-        .get(`/routes/${tripId}`)
-        console.log(res);
-    })
-
-
-    // it("should return a 500 status code and and error message", async () => {
-    //     const res = await request(app).get("/routes")
-    //     console.log(res, "ini res");
+    // it("should return a user with a 200 status code", async () => {
+    //     const res = await request(app)
+    //     .get(`/routes/${tripId}`)
+    //     console.log(res);
     // })
+
+
+    it("should return a 500 status code and and error message", async () => {
+        const res = await request(app).get("/routes")
+        console.log(res, "ini res");
+    })
 
 })
