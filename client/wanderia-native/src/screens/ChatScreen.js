@@ -13,7 +13,6 @@ import { auth, database } from "../../config/firebase";
 import { useNavigation } from "@react-navigation/native";
 
 const DirectChatScreen = ({ route }) => {
-    console.log("route", route);
     const navigator = useNavigation();
     const [messages, setMessages] = useState([]);
     const { username } = route.params;
@@ -82,7 +81,7 @@ const DirectChatScreen = ({ route }) => {
                     messagesContainerStyle={{
                         backgroundColor: "#fff",
                     }}
-                    bottomOffset={40}
+                    bottomOffset={ Platform.OS !== 'android' && 40 }
                 />
             </View>
         </View>

@@ -1,17 +1,10 @@
 import {
-    View,
-    Text,
-    StyleSheet,
-    Button,
-    TouchableOpacity,
-    Image,
-    ScrollView,
+    View
 } from "react-native";
 import React, { useLayoutEffect, useState } from "react";
 import MapEatsScreen from "../components/MapEatsScreen";
 import { useDispatch, useSelector } from "react-redux";
 import BussinessInfo from "../components/BussinessInfo";
-import * as Icons from "@expo/vector-icons";
 import { mapMarkers, openMarker } from "../stores/actionCreator";
 
 const EatScreen = () => {
@@ -38,7 +31,7 @@ const EatScreen = () => {
                     markerState ? `h-1/2` : `h-0`
                 } duration-200 w-full bg-white `}
             >
-                <BussinessInfo markerState={markerState} />
+                {/* <BussinessInfo markerState={markerState} /> */}
             </View>
         </View>
     );

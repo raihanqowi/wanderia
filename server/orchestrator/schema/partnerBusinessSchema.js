@@ -45,8 +45,10 @@ const partnerBusinessTypeDefs = `#graphql
     }
 
     type Query {
-        allPartnerBusiness(access_token: String): [PartnerBusiness],
+        allPartnerBusiness: [PartnerBusiness],
+        partnerBusiness(access_token: String): [PartnerBusiness]
         onePartnerBusiness(input: IdForOneBusiness): PartnerBusiness
+        detailBusiness(id: ID): PartnerBusiness
     }
 
     type Mutation {
@@ -59,78 +61,128 @@ const partnerBusinessResolver = {
     Query: {
         allPartnerBusiness: async (_, args) => {
             try {
-                const { access_token } = args
-                const cache = await redis.get("partnerBusiness")
+                const cache = await redis.get("partnerBusiness");
                 if (cache) {
-                    const data = await JSON.parse(cache)
-                    return data
+                    const data = await JSON.parse(cache);
+                    return data;
                 } else {
                     const { data } = await axios({
                         method: "GET",
-                        url: `${process.env.PARTNER_URL}/business`,
-                        headers: {
-                            access_token
-                        }
-                    })
-                    await redis.set("partnerBusiness", JSON.stringify(data))
-                    return data
+                        url: `${process.env.PARTNER_URL}`,
+                        // headers: {
+                        //     access_token
+                        // }
+                    });
+                    await redis.set("partnerBusiness", JSON.stringify(data));
+                    return data;
                 }
             } catch (error) {
-                throw error.response.data
+                throw error.response.data;
+            }
+        },
+        partnerBusiness: async (_, args) => {
+            try {
+                console.log(args);
+                const { access_token } = args;
+                const { data } = await axios({
+                    method: "GET",
+                    url: `${process.env.PARTNER_URL}/business`,
+                    headers: {
+                        access_token,
+                    },
+                });
+                return data;
+            } catch (error) {
+                throw error.response.data;
             }
         },
         onePartnerBusiness: async (_, args) => {
             try {
-                const { id, access_token } = args.input
+                const { id, access_token } = args.input;
                 const { data } = await axios({
                     method: "GET",
                     url: `${process.env.PARTNER_URL}/business/${id}`,
                     headers: {
-                        access_token
-                    }
-                })
-                return data
+                        access_token,
+                    },
+                });
+                return data;
             } catch (error) {
-                throw error.response.data
+                throw error.response.data;
             }
-        }
+        },
+        detailBusiness: async (_, args) => {
+            try {
+                const { id } = args;
+                const { data } = await axios({
+                    method: "GET",
+                    url: `${process.env.PARTNER_URL}/business/${id}`,
+                });
+                return data;
+            } catch (error) {
+                throw error.response.data;
+            }
+        },
     },
     Mutation: {
         addNewPartnerBusiness: async (_, args) => {
             try {
-                const { name, description, CategoryId, mapUrl, PartnerId, imageUrl, access_token } = args.input
+                const {
+                    name,
+                    description,
+                    CategoryId,
+                    mapUrl,
+                    PartnerId,
+                    imageUrl,
+                    access_token,
+                } = args.input;
                 const response = await axios({
                     method: "POST",
                     url: `${process.env.PARTNER_URL}/business`,
-                    data: { name, description, CategoryId, mapUrl, PartnerId, imageUrl },
+                    data: {
+                        name,
+                        description,
+                        CategoryId,
+                        mapUrl,
+                        PartnerId,
+                        imageUrl,
+                    },
                     headers: {
-                        access_token
-                    }
-                })
-                await redis.del('partnerBusiness')
-                return response.data
+                        access_token,
+                    },
+                });
+                await redis.del("partnerBusiness");
+                return response.data;
             } catch (error) {
-                throw error.response.data
+                throw error.response.data;
             }
         },
         editPartnerBusiness: async (_, args) => {
             try {
-                const { id, name, description, CategoryId, mapUrl, imageUrl, access_token } = args.input
+                const {
+                    id,
+                    name,
+                    description,
+                    CategoryId,
+                    mapUrl,
+                    imageUrl,
+                    access_token,
+                } = args.input;
                 const response = await axios({
                     method: "PATCH",
                     url: `${process.env.PARTNER_URL}/business/${id}`,
                     data: { name, description, CategoryId, mapUrl, imageUrl },
                     headers: {
-                        access_token
-                    }
-                })
-                await redis.del('partnerBusiness')
-                return response.data
+                        access_token,
+                    },
+                });
+                await redis.del("partnerBusiness");
+                return response.data;
             } catch (error) {
-                throw error.response.data
+                throw error.response.data;
             }
-        }
-    }
-}
+        },
+    },
+};
 
-module.exports = { partnerBusinessTypeDefs, partnerBusinessResolver }
+module.exports = { partnerBusinessTypeDefs, partnerBusinessResolver };

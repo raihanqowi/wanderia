@@ -12,13 +12,13 @@ const { authorization, postAuthorization } = require("../middleware/auth");
 //     api_secret: "moFond5Xm02MOA0JkD2P7l9c-3U",
 // });
 
-// const storage = new CloudinaryStorage({
-//     cloudinary: cloudinary,
-//     params: {
-//         folder: "Wanderia",
-//     },
-// });
-// const upload = multer({ storage: storage });
+const storage = new CloudinaryStorage({
+    cloudinary: cloudinary,
+    params: {
+        folder: "Wanderia",
+    },
+});
+const upload = multer({ storage: storage });
 
 routerPost.get("/", PostControler.getAllPost);
 routerPost.post('/add/:id', authorization, PostControler.createPost)

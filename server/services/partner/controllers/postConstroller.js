@@ -13,10 +13,13 @@ class PostControler {
     static async createPost(req, res, next) {
         try {
             const { id } = req.params;
-            const { name, imageUrl } = req.body
-            const dataPost = await Post.create({ 
-                name, imageUrl, BusinessId: id 
-            }); 
+            const { name, imageUrl, link } = req.body;
+            const dataPost = await Post.create({
+                name,
+                imageUrl,
+                link,
+                BusinessId: id,
+            });
             res.status(201).json(dataPost);
         } catch (error) {
             next(error);

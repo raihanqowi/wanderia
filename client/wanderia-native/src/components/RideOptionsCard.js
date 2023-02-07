@@ -46,9 +46,6 @@ const RideOptionsCard = () => {
     const travelTimeInformation = useSelector(selectTravelTimeInformation);
     const dispatch = useDispatch();
 
-    // const { formatCurrency } = useGlobalize();
-    // console.log(g);
-
     return (
         <SafeAreaView className="bg-white flex-grow">
             <View>
@@ -90,7 +87,7 @@ const RideOptionsCard = () => {
                                 {title}
                             </Text>
                             <Text>
-                                {travelTimeInformation?.duration.text} Wander
+                                {travelTimeInformation?.duration?.text} Wander
                                 Time
                             </Text>
                         </View>

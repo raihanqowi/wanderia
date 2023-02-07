@@ -38,8 +38,30 @@ module.exports = (sequelize, DataTypes) => {
                     },
                 },
             },
-            latitude: DataTypes.FLOAT,
-            longitude: DataTypes.FLOAT,
+            latitude: {
+                type: DataTypes.FLOAT,
+                allowNull: false,
+                validate: {
+                    notNull: {
+                        msg: "Latitude in map url is Required",
+                    },
+                    notEmpty: {
+                        msg: "Latitude in map url is Required",
+                    },
+                },
+            },
+            longitude: {
+                type: DataTypes.FLOAT,
+                allowNull: false,
+                validate: {
+                    notNull: {
+                        msg: "Longitude in map url is Required",
+                    },
+                    notEmpty: {
+                        msg: "Longitude in map url is Required",
+                    },
+                },
+            },
             address: {
                 type: DataTypes.TEXT,
                 allowNull: false,
@@ -66,7 +88,18 @@ module.exports = (sequelize, DataTypes) => {
                     },
                 },
             },
-            PartnerId: DataTypes.INTEGER,
+            PartnerId: {
+                type: DataTypes.INTEGER,
+                allowNull: false,
+                validate: {
+                    notNull: {
+                        msg: "Partner is Required",
+                    },
+                    notEmpty: {
+                        msg: "Partner is Required",
+                    },
+                },
+            },
             status: DataTypes.STRING,
             imageUrl: DataTypes.STRING,
         },

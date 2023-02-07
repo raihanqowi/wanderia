@@ -38,7 +38,6 @@ const ProfileScreen = () => {
         setUsername(auth.currentUser.displayName);
         setEmail(auth.currentUser.email);
         setImgUrl(auth.currentUser.photoURL);
-        // setPassword(auth.currentUser.password)
     }, []);
 
     return (

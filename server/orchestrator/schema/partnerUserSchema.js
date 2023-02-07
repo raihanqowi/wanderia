@@ -33,33 +33,34 @@ const partnerUserResolver = {
     Mutation: {
         addNewUser: async (_, args) => {
             try {
-                const { name, email, password } = args.input
+                const { name, email, password } = args.input;
                 const response = await axios({
                     method: "POST",
                     url: `${process.env.PARTNER_URL}/partner/register`,
                     data: { name, email, password },
-                })
-                await redis.del('partnerUser')
-                return response.data
+                });
+                await redis.del("partnerUser");
+                return response.data;
             } catch (error) {
-                throw error.response.data
+                throw error.response.data;
             }
         },
         login: async (_, args) => {
             try {
-                const { email, password } = args.input
+                console.log(args);
+                const { email, password } = args.input;
                 const response = await axios({
                     method: "POST",
                     url: `${process.env.PARTNER_URL}/partner/login`,
                     data: { email, password },
-                })
-                await redis.del('partnerUser')
-                return response.data
+                });
+                await redis.del("partnerUser");
+                return response.data;
             } catch (error) {
-                throw error.response.data
+                throw error.response.data;
             }
-        }
-    }
-}
+        },
+    },
+};
 
-module.exports = { partnerUserTypeDefs, partnerUserResolver }
+module.exports = { partnerUserTypeDefs, partnerUserResolver };

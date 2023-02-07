@@ -13,6 +13,9 @@ class BusinessController {
             } = req.body;
             const PartnerId = req.user.id;
             let check;
+            if (!mapUrl || mapUrl.split.length <= 0) {
+                res.status(400).json({ message: "mapUrl is required" });
+            }
             mapUrl.split("/").map(function (el) {
                 if (el.includes("@")) {
                     check = el.slice(1).split(",");
@@ -75,7 +78,17 @@ class BusinessController {
                     },
                 }
             );
-            res.status(201).json({message:"data berhasil di update"});
+            res.status(201).json({ message: "data berhasil di update" });
+        } catch (error) {
+            next(error);
+        }
+    }
+
+    static async deleteBusiness(req, res, next) {
+        try {
+            const id = req.params.id;
+            await Business.destroy({ where: { id } });
+            res.status(200).json({ message: "Success to Delete" });
         } catch (error) {
             next(error);
         }
